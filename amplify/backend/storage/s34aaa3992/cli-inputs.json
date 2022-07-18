@@ -1,0 +1,14 @@
+{
+  "resourceName": "s34aaa3992",
+  "policyUUID": "4aaa3992",
+  "bucketName": "amplifydemo726e7367a16a4b0db74dd051e9ff11d8",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
