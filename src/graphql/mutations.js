@@ -1,48 +1,65 @@
-/* eslint-disable */
-// this is an auto generated file. This will be overwritten
 
-export const createNote = /* GraphQL */ `
-  mutation CreateNote(
-    $input: CreateNoteInput!
-    $condition: ModelNoteConditionInput
+export const createMovieListItem = /* GraphQL */ `
+  mutation CreateMovieListItem(
+    $input: CreateMovieListItemInput!
+    $condition: ModelMovieListItemConditionInput
   ) {
-    createNote(input: $input, condition: $condition) {
+    createMovieListItem(input: $input, condition: $condition) {
       id
       name
       description
       image
+      Score
+      Release
+      Vote_Count
+      Liked
+      Watched
       createdAt
       updatedAt
     }
   }
 `;
-export const updateNote = /* GraphQL */ `
-  mutation UpdateNote(
-    $input: UpdateNoteInput!
-    $condition: ModelNoteConditionInput
+
+export const updateMovieListItem = /* GraphQL */ `
+  mutation UpdateMovieListItem(
+    $input: UpdateMovieListItemInput!
+    $condition: ModelMovieListItemConditionInput
   ) {
-    updateNote(input: $input, condition: $condition) {
-      id
+    updateMovieListItem(input: $input, condition: $condition) {
+     id
       name
       description
       image
+      Score
+      Release
+      Vote_Count
+      Liked
+      Watched
       createdAt
       updatedAt
     }
   }
 `;
-export const deleteNote = /* GraphQL */ `
-  mutation DeleteNote(
-    $input: DeleteNoteInput!
-    $condition: ModelNoteConditionInput
+
+export const deleteMovieListItem = /* GraphQL */ `
+  mutation DeleteMovieListItem(
+    $input: DeleteMovieListItemInput!
+    $condition: ModelMovieListItemConditionInput
   ) {
-    deleteNote(input: $input, condition: $condition) {
+    deleteMovieListItem(input: $input, condition: $condition) {
       id
       name
       description
       image
+      Score
+      Release
+      Vote_Count
+      Liked
+      Watched
       createdAt
+      updatedAt
       updatedAt
     }
   }
 `;
+

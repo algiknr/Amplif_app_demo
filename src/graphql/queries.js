@@ -1,32 +1,42 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getNote = /* GraphQL */ `
-  query GetNote($id: ID!) {
-    getNote(id: $id) {
+export const getMovieListItem = /* GraphQL */ `
+  query GetMovieListItem($id: ID!) {
+    getMovieListItem(id: $id) {
       id
       name
       description
       image
+      Score
+      Release
+      Vote_Count
+      Liked
+      Watched
       createdAt
       updatedAt
     }
   }
 `;
-export const listNotes = /* GraphQL */ `
-  query ListNotes(
-    $filter: ModelNoteFilterInput
+export const listMovielistItems = /* GraphQL */ `
+  query ListMovieListItems(
+    $filter: ModelMovieListItemFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listNotes(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listMovieListItems(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
-        id
-        name
-        description
-        image
-        createdAt
-        updatedAt
+       id
+      name
+      description
+      image
+      Score
+      Release
+      Vote_Count
+      Liked
+      Watched
+      createdAt
+      updatedAt
       }
       nextToken
     }
