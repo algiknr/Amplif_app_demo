@@ -8,8 +8,18 @@ import IconButton from '@mui/material/IconButton';
 //import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from "@mui/material/MenuItem";
 import {AccountCircle} from "@mui/icons-material";
-import {Menu} from "@mui/material";
-import {Image} from "@aws-amplify/ui-react";
+import {Button, Menu} from "@mui/material";
+import {Image, withAuthenticator} from "@aws-amplify/ui-react";
+import { Auth } from 'aws-amplify';
+
+async function signOut() {
+    try {
+        await Auth.signOut();
+        window.location.reload();
+    } catch (error) {
+        console.log('error signing out: ', error);
+    }
+}
 
 export const SiteHeader= ({username}) =>{
 
@@ -68,6 +78,7 @@ export const SiteHeader= ({username}) =>{
                         >
                             <MenuItem onClick={handleClose}>My Movie List</MenuItem>
                         </Menu>
+                        <Button variant='filled' onClick={signOut}> Log Out</Button>
 
                     </div>
                 </Toolbar>
@@ -75,4 +86,4 @@ export const SiteHeader= ({username}) =>{
         </Box>
     );
 }
-export default SiteHeader;
+export default withAuthenticator(SiteHeader);

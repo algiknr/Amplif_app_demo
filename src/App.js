@@ -5,6 +5,7 @@ import {Flex,Authenticator,ThemeProvider,Theme,defaultTheme} from '@aws-amplify/
 import '@aws-amplify/ui-react/styles.css';
 import Notes from "./notes";
 import {Header} from "./Header";
+//import Box from "@mui/material/Box";
 
 
 const components = {
@@ -46,7 +47,8 @@ const theme: Theme = {
 function App(){
     return (
         <div style={{
-            backgroundImage: `url("https://wallpapercave.com/wp/wp5556216.jpg")`
+            backgroundImage: `url("https://wallpapercave.com/wp/wp5556216.jpg")`,
+            height: window.innerHeight
         }}>
             <Flex padding={"1rem"}
                 backgroundColor={tokens.colors.background.secondary}
@@ -55,6 +57,7 @@ function App(){
             >
         <ThemeProvider theme={theme}>
         <Authenticator components={components}>
+
             {({  user }) => (
         <Router>
           <AppRoutes  username={user.email} />

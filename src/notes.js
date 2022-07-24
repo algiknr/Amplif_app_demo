@@ -238,7 +238,7 @@ function Notes({user}) {
             <div>
                 {isMovieChosen ? (
                     <ComplexGrid movie={chosenMovie}/>
-                ) : (inside?(<div style={{ height: window.innerHeight,marginTop:"10rem",color:"white"}}><Typography variant={"h3"}> Sorry no movie was found with these parameters :(</Typography></div>):(<div><Box sx={{ height: window.innerHeight }} > </Box></div>)
+                ) : (inside?(<div style={{ marginTop:"10rem",color:"white"}}><Typography variant={"h3"}> Sorry no movie was found with these parameters :(</Typography></div>):(<div><Box> </Box></div>)
                 )
                 }
             </div></Stack></div>

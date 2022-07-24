@@ -34,6 +34,8 @@ const useStyles = makeStyles(() => ({
     }
 
 }));
+
+
 async function trailer(id){
     fetch( "https://api.themoviedb.org/3/movie/+"+id+"/videos?api_key=cc7615103a5603c9f2aa88c443deb9ea"
 , {
@@ -48,7 +50,7 @@ async function trailer(id){
                 window.open("https://www."+trailer[0].site.toLowerCase()+".com/watch?v="+trailer[0].key)
             }
 
-        }).catch(err => console.log(err));
+        }).catch(() =>   alert("There is no trailer connection for this movie."));
 }
 /*async function CreateMovieListtem(movie) {
     console.log(movie)
@@ -81,10 +83,11 @@ export const ComplexGrid= ({movie}) =>  {
         }
         setOpen( false );
     };
+
     let adress="https://image.tmdb.org/t/p/original/"+movie.poster_path
     return (
 
-        <Box sx={{height:window.innerHeight}}>
+        <Box >
         <Paper
             sx={{
                 p: 2,
