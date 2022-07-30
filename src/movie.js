@@ -143,14 +143,14 @@ function Movie({user}) {
     }
 
     return (
-        <div  >
+        <div >
         <Stack direction="column" spacing={3}>
         <div  >
         <SiteHeader username={user}/>
         </div>
-        <div className="App">
+        <div >
             <Stack direction="row" spacing={5}>
-            <Box sx={{ width:150 }}>
+            <Box style={{width:"20rem"}} >
                 <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label" sx={{ color:"white", bgcolor: "orange"}}>Vote_Count</InputLabel>
                     <Select
@@ -158,7 +158,7 @@ function Movie({user}) {
                         id="demo-simple-select"
                         value={vote}
                         label="Vote_Count"
-                        sx={{ bgcolor: "#fff"}}
+                        sx={{width:"8rem", bgcolor: "#fff"}}
                         onChange={handleChangeVote}
                     >
                         <MenuItem value={0}>+0</MenuItem>
@@ -171,12 +171,7 @@ function Movie({user}) {
                     </Select>
                 </FormControl>
             </Box>
-            <Box
-                sx={{
-                    '& > legend': { mt: 2 },
-                }}
-            >
-            </Box>
+
                     <FormControl sx={{  width: 300 }}>
                     <InputLabel id="demo-multiple-chip-label" sx={{ color:"white", bgcolor: "orange"}}>Genres</InputLabel>
                     <Select
@@ -222,10 +217,11 @@ function Movie({user}) {
             </Stack>
 
         </div>
-            <div>
+            <div style={{ marginTop:"3rem"}}>
                 {isMovieChosen ? (
-                    <ComplexGrid movie={chosenMovie} username={user}/>
-                ) : (inside?(<div style={{ marginTop:"10rem",color:"white"}}><Typography variant={"h3"}> Sorry no movie was found with these parameters :(</Typography></div>):(<div><Box> </Box></div>)
+                    <div style={{height:window.innerHeight}}>
+                        <ComplexGrid movie={chosenMovie} username={user}/></div>
+                ) : (inside?(<div style={{ color:"white"}}><Typography variant={"h3"}> Sorry no movie was found with these parameters :(</Typography></div>):(<div style={{height:window.innerHeight}}/>)
                 )
                 }
             </div></Stack></div>

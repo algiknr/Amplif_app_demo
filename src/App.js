@@ -53,13 +53,14 @@ function App(){
     return (
         <div style={{
             backgroundImage: `url("https://wallpapercave.com/wp/wp7489432.jpg")`,
-            height: window.innerHeight*1.5
+            backgroundSize:"cover"
         }}>
             <Flex padding={"1rem"}
                 backgroundColor={tokens.colors.background.secondary}
 
                 justifyContent="center"
             >
+
         <ThemeProvider theme={theme}>
         <Authenticator components={components}>
 

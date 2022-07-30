@@ -66,7 +66,8 @@ async function trailer(id){
 
 export const ComplexGrid=  ({movie, username}) => {
     async function CreateMovieListtem(movie,username) {
-        console.log(username)
+        setCurserClose(true)
+
 
         const apiData = await API.graphql(
             graphqlOperation(listMovieListItems, { filter: { user: { contains: username.username} } })
@@ -90,14 +91,16 @@ export const ComplexGrid=  ({movie, username}) => {
             };
 
             await API.graphql({ query: createMovieListItemMutation, variables: {input: MovieListItem}
-            });}else{
+            });setCurserClose(false)}else{
             setOpen2(true)
+            setCurserClose(false)
         }}
 
     const [mouseopen, setMouseopen] = React.useState(false);
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const [open2, setOpen2] = React.useState(false);
+    const [curserclose, setCurserClose] = React.useState(false);
 
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
@@ -116,8 +119,8 @@ export const ComplexGrid=  ({movie, username}) => {
                 sx={{
                     p: 2,
                     margin: 'auto',
-                    width: 1000,
-                    height: 500,
+                    width:"70rem",
+                    height: "33rem",
                     flexGrow: 10,
                     backgroundColor: (theme) =>
                         theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -125,8 +128,8 @@ export const ComplexGrid=  ({movie, username}) => {
             >
                 <Grid container spacing={3}>
                     <Grid item>
-                        <Stack direction="column" spacing={1}>
-                            <ButtonBase sx={{width: 300, height: 420}}>
+                        <Stack direction="column" spacing={1} >
+                            <ButtonBase sx={{width: "20rem", height: "28rem"}}>
                                 {movie.poster_path == null ? (<div>No Poster</div>) : (
                                     <Img alt="complex" src={adress} onMouseOver={() => setMouseopen(true)}
                                          onMouseOut={() => setMouseopen(false)}
@@ -189,7 +192,7 @@ export const ComplexGrid=  ({movie, username}) => {
                                                 }}>
                                                     Vote Count: {movie.vote_count}</Button>
                                             </Typography></Stack></Paper>
-                                    <Button variant="contained" onClick={() => {
+                                    <Button variant="contained" disabled={curserclose} onClick={() => {
                                         CreateMovieListtem(movie, username)
                                     }}
                                        color="success">

@@ -11,7 +11,6 @@ import {AccountCircle} from "@mui/icons-material";
 import {Button, Menu} from "@mui/material";
 import {Image, withAuthenticator} from "@aws-amplify/ui-react";
 import { Auth } from 'aws-amplify';
-import { useNavigate } from "react-router-dom";
 
 async function signOut() {
     try {
@@ -22,8 +21,7 @@ async function signOut() {
     }
 }
 
-export const SiteHeader= ({username,comefrom}) =>{
-    let navigate = useNavigate();
+export const SiteHeader= ({username,comefrome}) =>{
 
    // const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -54,7 +52,7 @@ export const SiteHeader= ({username,comefrom}) =>{
                     <Typography onClick={()=>  window.location.href='/'} variant="h6" component="div" sx={{cursor:"pointer", flexGrow: 1 }}>
                         &nbsp; Give Me Movie
                     </Typography>
-                    {comefrom==="movielist"?
+                    {comefrome==="mymovielist"?
                         (<Typography  variant="h6" component="div" sx={{ color:"green",marginLeft:"5rem",flexGrow: 1 }}>
                             <b> MY MOVIE LIST</b>
                     </Typography>):[]}
@@ -85,7 +83,7 @@ export const SiteHeader= ({username,comefrom}) =>{
                             open={Boolean(anchorEl)}
                             onClose={handleClose}
                         >
-                            <MenuItem onClick={()=> navigate("/mymovielist")}>My Movie List</MenuItem>
+                            <MenuItem onClick={()=>  window.location.href='/mymovielist'}>My Movie List</MenuItem>
                         </Menu>
                         <Button variant='filled' onClick={signOut}> Log Out</Button>
 

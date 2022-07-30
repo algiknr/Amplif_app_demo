@@ -74,7 +74,9 @@ function MovieImageList({user}) {
             graphqlOperation(listMovieListItems, { filter: { user: { contains: user } } })
         )
 
-        let arr=apiData.data.listMovieListItems.items
+        let arr=apiData.data.listMovieListItems.items.sort((a,b)=>(new Date(a.createdAt)-new Date(b.createdAt)))
+
+
 
         arr.forEach((element, index) => {
             arr[index] = { id:element.id,img: element.image,
@@ -169,20 +171,20 @@ function MovieImageList({user}) {
                         <SiteHeader username={user} comefrom={"movielist"}/>
 
 
-        <ImageList cols={3} sx={{ height: window.innerHeight*1.3 }}>
+        <ImageList cols={3} sx={{ height: window.innerHeight}}>
             {items.map((item,index) => (
                 <div key={item.title}  >
-                <ImageListItem  key={item.title} style={{marginTop:'1rem'}} >
+                <ImageListItem  key={item.title}  >
                     <div className='container'>
 
                     <img
-                        style={{ width: 300, height: 420 }}
+                        style={{ width: "20rem", height: "28rem" }}
                         src={"https://image.tmdb.org/t/p/original"+item.img}
                         alt={item.title}
                         loading="lazy"
                     />{item.title in isInfo && isInfo[item.title]===true ?(<div className='centered'>
                         <TextField
-                        style={{ width: 300, height: 420 }}
+                        style={{width: "20rem", height: "28rem"}}
                         inputProps={{ style: { color: "white",backgroundColor:"black",opacity:"0.7" } }}
                         id={index}
                         label=""
@@ -213,9 +215,9 @@ function MovieImageList({user}) {
                        </Dialog></IconButton></div><div className="top-left">{(item.watched==="true" && !(item.title in isWatched))|| isWatched[item.title]==="true"? <IconButton onClick={async(e)=>await handlewatched(e,"false",item.id,version[item.title])}
                                                                                                                                                                                     name={item.title} style={{borderRadius:"25px", color: "white",size:'small', backgroundColor: "grey" }}><VisibilityIcon/></IconButton>:<IconButton onClick={async(e)=>await handlewatched(e,"true",item.id,version[item.title])} name={item.title}  style={{borderRadius:"25px", color: "white", size:'small', backgroundColor: "grey" }}><VisibilityOffIcon/></IconButton>}</div></div>)}</div>
                     <ImageListItemBar
-                        style={{ width: 300, height: 120 }}
+                        style={{ width: "20rem", height: "8rem" }}
                         title={item.title}
-                        subtitle={<div><Stack spacing={1.05} direction="row">
+                        subtitle={<div><Stack spacing={1.8} direction="row">
                             <div>Score: {item.score}</div><div>Released: {item.released.substring(0,4)}</div>
                             <div>{(item.liked==="true"&&!(item.title in isup))||isLiked[item.title]==="true"?
                                 <IconButton onClick={async(e)=>await handleliked(e,"",item.id,version[item.title])} name={item.title}  style={{borderRadius:"25px", color: "white",size:'small', backgroundColor: "green" }}><ThumbUpAltIcon/></IconButton> : <IconButton name={item.title} onClick={async(e)=>await handleliked(e,"true",item.id,version[item.title])} style={{borderRadius:"25px", color: "white",size:'small', backgroundColor: "green" }}><ThumbUpOffAltIcon/></IconButton> }  </div>
