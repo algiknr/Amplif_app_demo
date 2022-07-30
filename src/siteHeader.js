@@ -17,11 +17,11 @@ async function signOut() {
         await Auth.signOut();
         window.location.reload();
     } catch (error) {
-        console.log('error signing out: ', error);
+
     }
 }
 
-export const SiteHeader= ({username}) =>{
+export const SiteHeader= ({username,comefrom}) =>{
 
    // const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -42,13 +42,20 @@ export const SiteHeader= ({username}) =>{
         <Box sx={{ width:"100%" }}>
             <AppBar  sx={{ bgcolor: "orange" }} position="static">
                 <Toolbar>
+
                     <Image width={50} height={50}
-                        alt="logo"
+                           style={{cursor:"pointer"}}
+                           onClick={()=>  window.location.href='/'}
+                           alt="logo"
                         src="https://seeklogo.com/images/M/movie-time-cinema-logo-8B5BE91828-seeklogo.com.png"
                     />
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                    <Typography onClick={()=>  window.location.href='/'} variant="h6" component="div" sx={{cursor:"pointer", flexGrow: 1 }}>
                         &nbsp; Give Me Movie
                     </Typography>
+                    {comefrom==="movielist"?
+                        (<Typography  variant="h6" component="div" sx={{ color:"green",marginLeft:"5rem",flexGrow: 1 }}>
+                            <b> MY MOVIE LIST</b>
+                    </Typography>):[]}
                     <div>{username.attributes.email}</div>
                     <div>
                         <IconButton
@@ -76,7 +83,7 @@ export const SiteHeader= ({username}) =>{
                             open={Boolean(anchorEl)}
                             onClose={handleClose}
                         >
-                            <MenuItem onClick={handleClose}>My Movie List</MenuItem>
+                            <MenuItem onClick={()=>  window.location.href='/mymovielist'}>My Movie List</MenuItem>
                         </Menu>
                         <Button variant='filled' onClick={signOut}> Log Out</Button>
 

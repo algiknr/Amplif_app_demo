@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@aws-amplify/ui-react": "^3.1.0",
+    "@aws-amplify/ui-components": "^1.9.6",
+    "@aws-amplify/ui-react": "^3.2.1",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@material-ui/core": "^4.12.4",
@@ -13,7 +14,7 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "@tinkoff/invest-openapi-js-sdk": "^1.5.0",
-    "aws-amplify": "^4.3.27",
+    "aws-amplify": "^4.3.29",
     "json": "^11.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -3,11 +3,16 @@ import {BrowserRouter as Router, Navigate, useRoutes} from "react-router-dom";
 import './App.css';
 import {Flex,Authenticator,ThemeProvider,Theme,defaultTheme} from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-import Notes from "./notes";
+import Movie from "./movie";
 import {Header} from "./Header";
+import MovieImageList from "./myMovieList";
 //import Box from "@mui/material/Box";
+import Amplify, { Auth } from 'aws-amplify';
+import awsconfig from './aws-exports';
 
+Amplify.configure(awsconfig);
 
+Auth.configure(awsconfig);
 const components = {
     Header
 };
@@ -15,8 +20,8 @@ const components = {
 function AppRoutes({username}) {
     return useRoutes(
         [
-
-            {path: '/', element: <Notes user={username}/>},
+            {path: '/mymovielist', element: <MovieImageList user={username}/>},
+            {path: '/', element: <Movie user={username}/>},
             {path: "*", element: <Navigate to="/" replace/>}
 
         ]
@@ -47,8 +52,8 @@ const theme: Theme = {
 function App(){
     return (
         <div style={{
-            backgroundImage: `url("https://wallpapercave.com/wp/wp5556216.jpg")`,
-            height: window.innerHeight
+            backgroundImage: `url("https://wallpapercave.com/wp/wp7489432.jpg")`,
+            height: window.innerHeight*1.5
         }}>
             <Flex padding={"1rem"}
                 backgroundColor={tokens.colors.background.secondary}

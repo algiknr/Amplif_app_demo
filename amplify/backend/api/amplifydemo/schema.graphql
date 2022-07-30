@@ -8,6 +8,7 @@ type MovieListItem @model @auth(rules: [{allow: public}]) {
   Vote_Count: String
   Liked: String
   Watched: String
+  user: String
 }
 
 type Movie @model @auth(rules: [{allow: public}]) {

@@ -15,11 +15,7 @@ import Chip from '@mui/material/Chip';
 import ComplexGrid from "./SingleMovieDisplay";
 import Stack from '@mui/material/Stack';
 import {Button} from "@mui/material";
-// import { Auth } from 'aws-amplify';
 import SiteHeader from "./siteHeader";
-// import { SxProps } from '@mui/material/styles';
-
-
 
 
 const ITEM_HEIGHT = 48;
@@ -44,7 +40,7 @@ function getStyles(name, personName, theme) {
     };
 }
 
-function Notes({user}) {
+function Movie({user}) {
     const theme = useTheme();
     let [inside, setInside] = React.useState(false);
     const [movieName, setMovieName] = React.useState([]);
@@ -54,9 +50,8 @@ function Notes({user}) {
     let [movieNames, setmovieNames] = React.useState([]);
     let [newValue, setNewValue] = React.useState(0);
     let [number, setNumber] = React.useState();
-    //let [pagenumber, setPageNumber] = React.useState(0);
 
-    useEffect(() => {genres();   }, []);
+    useEffect(() => {genres().then(() => []);   }, []);
     const [vote, setVote] = React.useState(0);
 
     const handleChangeVote = (event) => {
@@ -65,7 +60,7 @@ function Notes({user}) {
 
 
     const handleChange = async (event) => {
-        console.log(event)
+
 
         const {
             target: {value},
@@ -76,7 +71,6 @@ function Notes({user}) {
         );
 
     };
-
 
     async function send(){
     let moviekeystring=""
@@ -99,8 +93,7 @@ function Notes({user}) {
                 headers: {'Content-Type': 'application/json'}
             }).then(res => res.json())
             .then(async json => {
-                console.log(json)
-                console.log("inside")
+
                 if (json.total_pages > 500) {
                      number = Math.floor(Math.random() * 500) + 1
                    await setNumber(number)
@@ -109,7 +102,7 @@ function Notes({user}) {
                    number = Math.floor(Math.random() * json.total_pages) + 1
                   await setNumber(number)
                 }
-                console.log(number)
+
             }).catch(err => console.log(err));
 
                 await part2("https://api.themoviedb.org/3/discover/movie?api_key=cc7615103a5603c9f2aa88c443deb9ea" +
@@ -121,7 +114,7 @@ function Notes({user}) {
 
     }
     async function part2(address){
-        console.log(address)
+
         let arraynumber=0
         let arraynumberrnd=0
         await fetch( address
@@ -130,14 +123,11 @@ function Notes({user}) {
                 headers: {'Content-Type': 'application/json'}
             }).then(res => res.json())
             .then(async json => {
-                console.log("djfhjk")
-                console.log(json)
-                console.log(number)
-                console.log(json.results)
+
                 arraynumber=json.results.length
                 if(arraynumber>0){
                     arraynumberrnd=Math.floor(Math.random() * arraynumber)
-                    console.log(json.results[arraynumberrnd])
+
                     setChosenMovie(json.results[arraynumberrnd])
                     setIsMovieChosen(true)}else{setIsMovieChosen(false)}
                     setInside(true)
@@ -149,14 +139,11 @@ function Notes({user}) {
                 method: 'GET',
                 headers: {'Content-Type': 'application/json'}
             }).then(res => res.json())
-            .then(async json => {
-                console.log(json)
-                await setmovieNames(json.genres)
-            }).catch(err => console.log(err));
+            .then(async json => await setmovieNames(json.genres)).catch(err => console.log(err));
     }
 
     return (
-        <div >
+        <div  >
         <Stack direction="column" spacing={3}>
         <div  >
         <SiteHeader username={user}/>
@@ -224,7 +211,7 @@ function Notes({user}) {
                     </FormControl>
 
                 <Stack direction="column">
-                 <div style={{color:"orange"}}> Least Score</div>
+                    <div style={{backgroundColor:"darkolivegreen",color:"orange"}}><b> Least Score</b></div>
                     <Box style={{backgroundColor:"white"}}>
                 <Rating  onChange={(event, newValue) => {
                     setNewValue(newValue);
@@ -237,11 +224,11 @@ function Notes({user}) {
         </div>
             <div>
                 {isMovieChosen ? (
-                    <ComplexGrid movie={chosenMovie}/>
+                    <ComplexGrid movie={chosenMovie} username={user}/>
                 ) : (inside?(<div style={{ marginTop:"10rem",color:"white"}}><Typography variant={"h3"}> Sorry no movie was found with these parameters :(</Typography></div>):(<div><Box> </Box></div>)
                 )
                 }
             </div></Stack></div>
     ) }
 
-export default withAuthenticator(Notes);
+export default withAuthenticator(Movie);
