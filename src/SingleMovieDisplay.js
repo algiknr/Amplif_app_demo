@@ -66,9 +66,10 @@ async function trailer(id){
 
 export const ComplexGrid=  ({movie, username}) => {
     async function CreateMovieListtem(movie,username) {
+        console.log(username)
 
         const apiData = await API.graphql(
-            graphqlOperation(listMovieListItems, { filter: { user: { contains: username} } })
+            graphqlOperation(listMovieListItems, { filter: { user: { contains: username.username} } })
         )
 
         const moviesFromAPI = apiData.data.listMovieListItems.items;
@@ -189,7 +190,7 @@ export const ComplexGrid=  ({movie, username}) => {
                                                     Vote Count: {movie.vote_count}</Button>
                                             </Typography></Stack></Paper>
                                     <Button variant="contained" onClick={() => {
-                                        CreateMovieListtem(movie, username.username)
+                                        CreateMovieListtem(movie, username)
                                     }}
                                        color="success">
                                         ADD TO LIST
