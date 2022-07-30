@@ -11,6 +11,7 @@ import {AccountCircle} from "@mui/icons-material";
 import {Button, Menu} from "@mui/material";
 import {Image, withAuthenticator} from "@aws-amplify/ui-react";
 import { Auth } from 'aws-amplify';
+import { useNavigate } from "react-router-dom";
 
 async function signOut() {
     try {
@@ -22,6 +23,7 @@ async function signOut() {
 }
 
 export const SiteHeader= ({username,comefrom}) =>{
+    let navigate = useNavigate();
 
    // const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -83,7 +85,7 @@ export const SiteHeader= ({username,comefrom}) =>{
                             open={Boolean(anchorEl)}
                             onClose={handleClose}
                         >
-                            <MenuItem onClick={()=>  window.location.href='/mymovielist'}>My Movie List</MenuItem>
+                            <MenuItem onClick={()=> navigate("/mymovielist")}>My Movie List</MenuItem>
                         </Menu>
                         <Button variant='filled' onClick={signOut}> Log Out</Button>
 
