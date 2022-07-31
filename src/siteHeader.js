@@ -21,7 +21,7 @@ async function signOut() {
     }
 }
 
-export const SiteHeader= ({username,comefrome}) =>{
+export const SiteHeader= ({username,comefrom}) =>{
 
    // const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -39,8 +39,8 @@ export const SiteHeader= ({username,comefrome}) =>{
     };
 
     return (
-        <Box sx={{ width:"100%" }}>
-            <AppBar  sx={{ bgcolor: "orange" }} position="static">
+        <Box sx={{ maxWidth:window.innerWidth }}>
+            <AppBar  sx={{ bgcolor: "orange" }} position="relative">
                 <Toolbar>
 
                     <Image width={50} height={50}
@@ -52,8 +52,8 @@ export const SiteHeader= ({username,comefrome}) =>{
                     <Typography onClick={()=>  window.location.href='/'} variant="h6" component="div" sx={{cursor:"pointer", flexGrow: 1 }}>
                         &nbsp; Give Me Movie
                     </Typography>
-                    {comefrome==="mymovielist"?
-                        (<Typography  variant="h6" component="div" sx={{ color:"green",marginLeft:"5rem",flexGrow: 1 }}>
+                    {comefrom==="mymovielist"?
+                        (<Typography  variant="h6" component="div" sx={{ color:"green",marginLeft:"5em",flexGrow: 1 }}>
                             <b> MY MOVIE LIST</b>
                     </Typography>):[]}
                     <div>{username.attributes.email}</div>

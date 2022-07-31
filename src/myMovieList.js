@@ -168,23 +168,23 @@ function MovieImageList({user}) {
         <div>
             {go ? (
                     <div>
-                        <SiteHeader username={user} comefrom={"movielist"}/>
+                        <SiteHeader username={user} comefrom={"mymovielist"}/>
 
 
-        <ImageList cols={3} sx={{ height: window.innerHeight}}>
+        <ImageList cols={3} sx={{  height: window.innerHeight}}>
             {items.map((item,index) => (
                 <div key={item.title}  >
                 <ImageListItem  key={item.title}  >
                     <div className='container'>
 
                     <img
-                        style={{ width: "20rem", height: "28rem" }}
+                        style={{ width: "20em", height: "28em" }}
                         src={"https://image.tmdb.org/t/p/original"+item.img}
                         alt={item.title}
                         loading="lazy"
                     />{item.title in isInfo && isInfo[item.title]===true ?(<div className='centered'>
                         <TextField
-                        style={{width: "20rem", height: "28rem"}}
+                        style={{width: "20em", height: "28em"}}
                         inputProps={{ style: { color: "white",backgroundColor:"black",opacity:"0.7" } }}
                         id={index}
                         label=""
@@ -215,7 +215,7 @@ function MovieImageList({user}) {
                        </Dialog></IconButton></div><div className="top-left">{(item.watched==="true" && !(item.title in isWatched))|| isWatched[item.title]==="true"? <IconButton onClick={async(e)=>await handlewatched(e,"false",item.id,version[item.title])}
                                                                                                                                                                                     name={item.title} style={{borderRadius:"25px", color: "white",size:'small', backgroundColor: "grey" }}><VisibilityIcon/></IconButton>:<IconButton onClick={async(e)=>await handlewatched(e,"true",item.id,version[item.title])} name={item.title}  style={{borderRadius:"25px", color: "white", size:'small', backgroundColor: "grey" }}><VisibilityOffIcon/></IconButton>}</div></div>)}</div>
                     <ImageListItemBar
-                        style={{ width: "20rem", height: "8rem" }}
+                        style={{ width: "20em", height: "8em" }}
                         title={item.title}
                         subtitle={<div><Stack spacing={1.8} direction="row">
                             <div>Score: {item.score}</div><div>Released: {item.released.substring(0,4)}</div>

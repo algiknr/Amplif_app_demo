@@ -143,12 +143,12 @@ function Movie({user}) {
     }
 
     return (
-        <div >
+        <div style={{maxWidth:"100%"}} >
         <Stack direction="column" spacing={3}>
         <div  >
         <SiteHeader username={user}/>
         </div>
-        <div style={{display:"flex",justifyContent:"center"}}>
+        <div style={{maxWidth:window.innerWidth}}>
             <Stack direction="row" spacing={5}>
             <Box  >
                 <FormControl fullWidth>
@@ -217,7 +217,7 @@ function Movie({user}) {
             </Stack>
 
         </div>
-            <div style={{ marginTop:"3rem"}}>
+            <div style={{ marginTop:"1em"}}>
                 {isMovieChosen ? (
                     <div style={{height:window.innerHeight}}>
                         <ComplexGrid movie={chosenMovie} username={user}/></div>

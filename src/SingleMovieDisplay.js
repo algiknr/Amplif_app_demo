@@ -121,16 +121,16 @@ export const ComplexGrid=  ({movie, username}) => {
                     margin: 'auto',
                     alignItems:"center",
                     display:"flex",
-                    height:"38em",
+                    height:"35em",
                     width:"59em",
                     resize:"both"
 
                 }}
             >
-                <Grid container spacing={3}>
+                <Grid container spacing={1}>
                     <Grid item>
                         <Stack direction="column" spacing={1} >
-                            <ButtonBase sx={{width: "22em", height: "33em"}}>
+                            <ButtonBase sx={{width: "22em", height: "28em"}}>
                                 {movie.poster_path == null ? (<div>No Poster</div>) : (
                                     <Img alt="complex" src={adress} onMouseOver={() => setMouseopen(true)}
                                          onMouseOut={() => setMouseopen(false)}

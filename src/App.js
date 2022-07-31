@@ -53,11 +53,11 @@ function App(){
     return (
         <div style={{
             backgroundImage: `url("https://wallpapercave.com/wp/wp7489432.jpg")`,
-            backgroundSize:"cover"
+            backgroundSize:"cover",
+            minHeight:window.innerHeight
         }}>
-            <Flex padding={"1rem"}
+            <Flex padding={"1em"}
                 backgroundColor={tokens.colors.background.secondary}
-
                 justifyContent="center"
             >
 
