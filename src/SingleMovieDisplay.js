@@ -121,8 +121,8 @@ export const ComplexGrid=  ({movie, username}) => {
                     margin: 'auto',
                     alignItems:"center",
                     display:"flex",
-                    height:"40em",
-                    width:"70em",
+                    height:"38em",
+                    width:"59em",
                     resize:"both"
 
                 }}
@@ -130,7 +130,7 @@ export const ComplexGrid=  ({movie, username}) => {
                 <Grid container spacing={3}>
                     <Grid item>
                         <Stack direction="column" spacing={1} >
-                            <ButtonBase sx={{width: "25em", height: "35em"}}>
+                            <ButtonBase sx={{width: "22em", height: "33em"}}>
                                 {movie.poster_path == null ? (<div>No Poster</div>) : (
                                     <Img alt="complex" src={adress} onMouseOver={() => setMouseopen(true)}
                                          onMouseOut={() => setMouseopen(false)}
@@ -160,9 +160,9 @@ export const ComplexGrid=  ({movie, username}) => {
                             </Grid>
                             <Grid item xs={12}>
 
-                                <Stack direction="column" spacing={5}>
+                                <Stack direction="column" spacing={7}>
                                     <Paper className={classes.paper_green}>
-                                        <Stack direction="row" spacing={5}>
+                                        <Stack direction="row"  spacing={0.2}>
 
                                             <Typography>
                                                 <Button variant="contained" style={{
