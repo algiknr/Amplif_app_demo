@@ -119,17 +119,18 @@ export const ComplexGrid=  ({movie, username}) => {
                 sx={{
                     p: 2,
                     margin: 'auto',
-                    width:"70rem",
-                    height: "33rem",
-                    flexGrow: 10,
-                    backgroundColor: (theme) =>
-                        theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+                    alignItems:"center",
+                    display:"flex",
+                    height:"40em",
+                    width:"70em",
+                    resize:"both"
+
                 }}
             >
                 <Grid container spacing={3}>
                     <Grid item>
                         <Stack direction="column" spacing={1} >
-                            <ButtonBase sx={{width: "20rem", height: "28rem"}}>
+                            <ButtonBase sx={{width: "25em", height: "35em"}}>
                                 {movie.poster_path == null ? (<div>No Poster</div>) : (
                                     <Img alt="complex" src={adress} onMouseOver={() => setMouseopen(true)}
                                          onMouseOut={() => setMouseopen(false)}

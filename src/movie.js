@@ -148,9 +148,9 @@ function Movie({user}) {
         <div  >
         <SiteHeader username={user}/>
         </div>
-        <div >
+        <div style={{display:"flex",justifyContent:"center"}}>
             <Stack direction="row" spacing={5}>
-            <Box style={{width:"20rem"}} >
+            <Box  >
                 <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label" sx={{ color:"white", bgcolor: "orange"}}>Vote_Count</InputLabel>
                     <Select
