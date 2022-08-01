@@ -1,4 +1,4 @@
-# Random movie generator
+# Give Me Movie (Random movie generator)
 
 The desktop web application was built with Amazon Amplify. GraphQL was used in order to create the APIs on the backend side and Amazon Dynamodb connection implemented for the data storage.
 
